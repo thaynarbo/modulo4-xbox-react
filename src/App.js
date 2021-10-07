@@ -1,25 +1,18 @@
-import logo from './logo.svg';
+import { Route, Switch } from 'react-router';
 import './App.css';
-
+import UserPage from './pages/UserPage';
+import Details from './pages/Details';
+import GlobalStyle from './styles/reset';
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<>
+			<GlobalStyle />
+			<Switch>
+				<Route path='/' exact={true} component={UserPage} />
+				<Route path='/details/:id' component={Details} />
+			</Switch>
+		</>
+	);
 }
 
 export default App;
