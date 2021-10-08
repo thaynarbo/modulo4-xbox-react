@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import { theme } from './themes';
 export default createGlobalStyle`
   * {
     margin: 0;
@@ -7,7 +8,7 @@ export default createGlobalStyle`
     outline: 0;
   }
   body {
-    background-color: #20232C;
+    background-color: ${theme.colors.black20};
     overflow: hidden;
     -webkit-font-smoothing: antialiased;
     font-size: 14px;

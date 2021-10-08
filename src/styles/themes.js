@@ -18,6 +18,7 @@ const blackShades = {
 	black10: '#2A2A34',
 	black20: '#20232C',
 	black30: '#1F1E22',
+	black40: '#1B1B23',
 };
 
 const spacing = {
