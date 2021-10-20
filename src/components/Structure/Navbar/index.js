@@ -21,10 +21,12 @@ const Navbar = () => {
   return (
     <Style.Container>
       <div>
-        <img
-          src="https://logodownload.org/wp-content/uploads/2018/11/xbox-logo.png"
-          alt=""
-        />
+        <Link to="/home">
+          <img
+            src="https://logodownload.org/wp-content/uploads/2018/11/xbox-logo.png"
+            alt=""
+          />
+        </Link>
       </div>
       <div>
         <ul>
