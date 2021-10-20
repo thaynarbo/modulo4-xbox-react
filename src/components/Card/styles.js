@@ -14,16 +14,34 @@ export const Container = styled.div`
 		justify-content: center;
 		width: 250px;
 		max-width: 400px;
+		position: relative;
 
 		img {
 			width: 80%;
 			border-radius: 0.85rem;
 		}
 		&:hover {
-			opacity: 0.4;
 		}
 	}
 	h2 {
+		margin-top: 20px;
 		color: ${theme.colors.white};
+	}
+	.badge {
+		position: absolute;
+		bottom: 0;
+		background: ${theme.colors.black10};
+		width: 70px;
+		height: 70px;
+		transform: translateY(30%);
+		border-radius: 50%;
+		overflow: hidden;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		img {
+			width: 70%;
+			color: blue;
+		}
 	}
 `;

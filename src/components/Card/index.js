@@ -1,21 +1,29 @@
-import React from 'react';
-import * as S from './styles';
-import { Link } from 'react-router-dom';
-const Card = () => {
-	const id = 4;
-	return (
-		<S.Container>
-			<Link to={`/details/${id}`}>
-				<div className='cover-img'>
-					<img
-						src='https://static1-br.millenium.gg/portals/5/45/@/45-legends-of-runeterra-game-cover-portal_cover_bd-1.png'
-						alt=''
-					/>
-				</div>
-			</Link>
-			<h2>League of Legends</h2>
-		</S.Container>
-	);
+import React, { useState } from "react";
+import * as S from "./styles";
+import { Link } from "react-router-dom";
+import DefaultImg from "./../../assets/no-cover.jpg";
+import { AiOutlineStar, AiFillStar } from "react-icons/ai";
+
+const imageNotFound = (event) => {
+  event.target.attributes.src.value = DefaultImg;
+};
+const Card = ({ game }) => {
+  return (
+    <S.Container>
+      <Link to={`/details/${game.id}`}>
+        <div className="cover-img">
+          <img src={game.gameCover} onError={imageNotFound} alt="" />
+          <div className="badge">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Xbox_one_logo.svg/1024px-Xbox_one_logo.svg.png"
+              alt=""
+            />
+          </div>
+        </div>
+      </Link>
+      <h2>{game.title}</h2>
+    </S.Container>
+  );
 };
 
 export default Card;
