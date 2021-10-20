@@ -22,6 +22,4 @@ export const ContainerInput = styled.input`
 	width: 100%;
 	font-size: ${theme.fontSizes.p1};
 	padding-left: ${({ icon }) => icon && theme.spacing.space5};
-
-    :
 `;
