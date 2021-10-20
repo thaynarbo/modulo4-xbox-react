@@ -1,7 +1,60 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import * as Style from "./styles";
+import { Api } from "../../api/api";
+import DefaultImg from "./../../assets/no-cover.jpg";
 
-const Details = () => {
-	return <div></div>;
+const Details = (props) => {
+  const id = props.match.params.id;
+  const [game, setGame] = useState("");
+  useEffect(() => {
+    const loadProduct = async () => {
+      const response = await Api.buildApiGetRequest(
+        Api.readByIdGames(id),
+        true
+      );
+
+      const results = await response.json();
+
+      setGame(results);
+    };
+
+    loadProduct();
+  }, [id]);
+  const handleDelete = async (event) => {
+    const response = await Api.buildApiDeleteRequest(
+      Api.deleteGameUrl(id),
+      true
+    );
+    console.log(response);
+    if (response.status === 200) {
+      props.history.push(`/home`);
+    } else {
+    }
+  };
+  return (
+    <Style.Container>
+      <Style.InfoContainer>
+        <img src={game.gameCover} alt="" />
+        <div>
+          <h2>{game.title}</h2>
+
+          {/* {game.genres?.map((genre) => {
+            return <h3>{genre}</h3>;
+          })} */}
+
+          <p>{game.description}</p>
+          {/* <iframe src={game.trailer} frameBorder="0"></iframe> */}
+        </div>
+        <div className="button-container">
+          <Link to={`/update/${id}`}>
+            <button>Editar</button>
+          </Link>
+          <button onClick={handleDelete}>Excluir</button>
+        </div>
+      </Style.InfoContainer>
+    </Style.Container>
+  );
 };
 
 export default Details;
