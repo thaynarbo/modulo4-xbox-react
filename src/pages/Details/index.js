@@ -36,21 +36,23 @@ const Details = (props) => {
     <Style.Container>
       <Style.InfoContainer>
         <img src={game.gameCover} alt="" />
-        <div>
+        <div className="game-info">
           <h2>{game.title}</h2>
 
           {/* {game.genres?.map((genre) => {
             return <h3>{genre}</h3>;
           })} */}
 
-          <p>{game.description}</p>
+          <p>{`Descrição:${game.description}`}</p>
+          <p>{`Ano:${game.year}`}</p>
+          <p>{`IMDB:${game.imdb}`}</p>
           {/* <iframe src={game.trailer} frameBorder="0"></iframe> */}
-        </div>
-        <div className="button-container">
-          <Link to={`/update/${id}`}>
-            <button>Editar</button>
-          </Link>
-          <button onClick={handleDelete}>Excluir</button>
+          <div className="button-container">
+            <Link to={`/update/${id}`}>
+              <button>Editar</button>
+            </Link>
+            <button onClick={handleDelete}>Excluir</button>
+          </div>
         </div>
       </Style.InfoContainer>
     </Style.Container>
