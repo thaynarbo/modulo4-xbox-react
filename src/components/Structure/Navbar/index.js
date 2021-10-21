@@ -30,7 +30,7 @@ const Navbar = () => {
       </div>
       <div>
         <ul>
-          <li>{isLogged ? <Link to="/home">Início</Link> : undefined}</li>
+          <li>{isLogged ? <Link to="/">Início</Link> : undefined}</li>
           <li>
             {isLogged ? (
               <Link to="/registergame">Cadastrar Jogo</Link>

@@ -5,6 +5,7 @@ import { AiOutlineUser } from "react-icons/ai";
 import { RiLock2Fill } from "react-icons/ri";
 import Button from "../Button";
 import { Api } from "../../api/api";
+import { JwtHandler } from "../../jwt-handler/JwtHandler";
 
 const Form = (props) => {
   const handleSubmit = async (e) => {
@@ -22,8 +23,10 @@ const Form = (props) => {
     const body = await response.json();
     if (response.status === 200) {
       const accessToken = body.accessToken;
-      localStorage.setItem("JWT", accessToken);
-      props.history.push("/home");
+      const userID = body.userID;
+      JwtHandler.setJwt(accessToken);
+      localStorage.setItem("USER_ID", userID);
+      props.history.push("/profiles");
     }
   };
   return (

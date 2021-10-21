@@ -11,6 +11,7 @@ import UpdateGames from "./pages/Games/UpdateGames";
 import CreateGames from "./pages/Games/CreateGames";
 import CreateUserForm from "./components/CreateUserForm";
 import Logout from "./pages/Logout";
+import Profiles from "./pages/Profiles";
 function App() {
   return (
     <>
@@ -23,8 +24,8 @@ function App() {
           component={CreateGames}
         ></GuardedRoute>
         <Route path="/signup" component={RegisterUser} />
-        <Route path="/" exact={true} component={UserPage} />
-        <GuardedRoute path="/home" component={UserPage} />
+        <GuardedRoute path="/" exact={true} component={UserPage} />
+        <GuardedRoute path="/profiles" component={Profiles} />
         <GuardedRoute path="/logout" component={Logout} />
         <Route path="/details/:id" component={Details} />
         <Route path="/update/:id" component={UpdateGames} />

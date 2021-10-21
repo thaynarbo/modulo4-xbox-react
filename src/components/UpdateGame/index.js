@@ -49,15 +49,10 @@ const UpdateGame = (props) => {
         payload,
         true
       );
-      if (!response) {
-        throw new Error(`Errou algo ${response.status}`);
-      }
       const body = await response.json();
       if (response.status === 200) {
         const id = body.id;
         props.history.push(`/details/${id}`);
-      } else {
-        console.log(response.status);
       }
     } catch (error) {
       console.log(error);

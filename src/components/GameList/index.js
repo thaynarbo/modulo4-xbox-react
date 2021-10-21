@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import * as Style from "./styles";
-import Card from "../Card";
+import GameCard from "../GameCard";
 import { Api } from "./../../api/api";
 const GameList = () => {
   const [games, setGames] = useState([]);
@@ -22,7 +22,7 @@ const GameList = () => {
   return (
     <Style.Container>
       {games.map((game) => {
-        return <Card game={game} key={game.id} />;
+        return <GameCard game={game} key={game.id} />;
       })}
     </Style.Container>
   );

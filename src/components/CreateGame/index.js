@@ -32,7 +32,7 @@ const CreateGame = (props) => {
     );
     const body = await response.json();
     if (response.status === 201) {
-      props.history.push("/home");
+      props.history.push("/");
     }
   };
   return (

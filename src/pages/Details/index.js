@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import * as Style from "./styles";
 import { Api } from "../../api/api";
 import DefaultImg from "./../../assets/no-cover.jpg";
-
+const imageNotFound = (event) => {
+  event.target.attributes.src.value = DefaultImg;
+};
 const Details = (props) => {
   const id = props.match.params.id;
   const [game, setGame] = useState("");
@@ -21,21 +23,21 @@ const Details = (props) => {
 
     loadProduct();
   }, [id]);
-  const handleDelete = async (event) => {
+  const handleDelete = async () => {
     const response = await Api.buildApiDeleteRequest(
       Api.deleteGameUrl(id),
       true
     );
     console.log(response);
     if (response.status === 200) {
-      props.history.push(`/home`);
+      props.history.push(`/`);
     } else {
     }
   };
   return (
     <Style.Container>
       <Style.InfoContainer>
-        <img src={game.gameCover} alt="" />
+        <img src={game.gameCover} onError={imageNotFound} alt="" />
         <div className="game-info">
           <h2>{game.title}</h2>
 

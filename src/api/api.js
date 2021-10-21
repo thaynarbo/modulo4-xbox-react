@@ -4,18 +4,22 @@ export const Api = {
 
   loginUrl: () => `${Api.baseUrl}/login`,
 
+  // GAME
   readAllGames: () => `${Api.baseUrl}/game`,
   readByIdGames: (id) => `${Api.baseUrl}/game/${id}`,
   createGameUrl: () => Api.baseUrl + "/game",
   updateGameUrl: (id) => `${Api.baseUrl}/game/${id}`,
   deleteGameUrl: (id) => `${Api.baseUrl}/game/${id}`,
 
+  // USERS
   createUserUrl: () => `${Api.baseUrl}/users`,
   deleteUserUrl: (id) => `${Api.baseUrl}/users/${id}`,
   updateUserUrl: (id) => `${Api.baseUrl}/users/${id}`,
 
-  createProfileUrl: () => `${Api.baseUrl}/profile`,
+  // PROFILE
 
+  createProfileUrl: () => `${Api.baseUrl}/profile`,
+  readAllProfilesbyUserId: (id) => `${Api.baseUrl}/profile/user/${id}`,
   authHeader: () => ({
     Authorization: "Bearer " + JwtHandler.getJwt(),
   }),
@@ -36,7 +40,7 @@ export const Api = {
       body: JSON.stringify(body),
     }),
 
-  buildApiPatchRequest: (url, body, auth) => {
+  buildApiPatchRequest: (url, body, auth) =>
     fetch(url, {
       method: "PATCH",
       headers: new Headers({
@@ -44,8 +48,7 @@ export const Api = {
         ...(auth ? Api.authHeader() : {}),
       }),
       body: JSON.stringify(body),
-    });
-  },
+    }),
   buildApiDeleteRequest: (url, auth) =>
     fetch(url, {
       method: "DELETE",
